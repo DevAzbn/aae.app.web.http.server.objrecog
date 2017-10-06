@@ -1,0 +1,11 @@
+{
+	"port" : {
+		"http" : 17005,
+		"https" : 17006
+	},
+	"path" : {
+		"static" : "./data/static",
+		"route" : "./data/route",
+		"pug" : "./data/pug"
+	}
+}

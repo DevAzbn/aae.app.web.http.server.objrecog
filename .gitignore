@@ -1,0 +1,5 @@
+data/sessions/sessions.nedb
+data/json/*.json
+data/static/upload/*.jpg
+data/static/upload/*.jpeg
+data/static/upload/*.png

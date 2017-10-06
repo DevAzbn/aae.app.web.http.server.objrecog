@@ -1,0 +1,14 @@
+html
+	include _/head
+	body
+		include _/header
+		div
+			form(method="POST" action="/upload/default/" enctype="multipart/form-data" class="azbn7__form_upload")
+				div
+					input(type="file" name="uploading[]")
+				div
+					input(type="submit")
+		div
+			video.resp__video(id="resp__video" style="max-width:400px;")
+			img.resp__image(style="max-width:600px;")
+		include _/footer
