@@ -3,7 +3,7 @@
 var fs = require('fs');
 var cv = require('opencv');
 
-var _item_stroke_color = [0, 0, 255];
+var _item_stroke_color = [255, 255, 255];
 var _item_stroke_width = 2;
 
 var threshold_b = [128, 128, 128];
@@ -23,13 +23,13 @@ function _(app, azbn) {
 			_data = Buffer.from(_data, 'base64');
 			
 			//var item = req.files.uploading[0];
-			var target = '/upload/dataurl/video__from_usermedia.jpg';
+			// ++++++++++++++++ var target = '/upload/dataurl/video__from_usermedia.jpg';
 			
-			app.saveFile('/static' + target, _data);
+			// ++++++++++++++++ app.saveFile('/static' + target, _data);
 			
 			//fs.createReadStream(item.path).pipe(fs.createWriteStream('./data/static' + target));
 			
-			cv.readImage('./data/static' + target, function(err, img){
+			cv.readImage(_data, function(err, img){
 				
 				if (err) {
 					//throw err;
@@ -59,11 +59,13 @@ function _(app, azbn) {
 						throw _err;
 					}
 					
+					var _img = null;
+					
 					for (var i = 0; i < items.length; i++){
 						
 						let item = items[i];
 						
-						//let img_c = img.crop(item.x, item.y, item.width, item.height);
+						//_img = img.crop(item.x, item.y, item.width, item.height);
 						//img_c.canny(5, 300);
 						//img_c.houghLinesP();
 						/*
@@ -86,6 +88,7 @@ function _(app, azbn) {
 						
 					}
 					
+					/*
 					img.save('./data/static' + target);///var/www/sites/azbn.ru/html/img/dev/opencv
 					
 					res.send({
@@ -93,6 +96,15 @@ function _(app, azbn) {
 							target
 						]
 					});
+					*/
+					//img.inRange(threshold_b, threshold_t);
+					//img.dilate(20);
+					
+					//if(_img != null) {
+					//	res.send('data:image/jpeg;base64,' + _img.toBuffer().toString('base64'));
+					//} else {
+						res.send('data:image/jpeg;base64,' + img.toBuffer().toString('base64'));
+					//}
 					
 				});
 				

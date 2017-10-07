@@ -19,7 +19,7 @@ $(function() {
 			
 			$.ajax({
 				url : '/upload/dataurl/',
-				dataType : 'json',
+				// ++++++++++++++++ dataType : 'json',
 				//cache : false,
 				//contentType : false,
 				//processData : false,
@@ -29,6 +29,7 @@ $(function() {
 				type : 'POST',
 				success: function(resp) {
 					
+					/*
 					if(resp.files && resp.files.length) {
 						
 						var item = resp.files[0];
@@ -36,6 +37,9 @@ $(function() {
 						$('.resp__image').attr('src', item + '?v=' + (new Date().getTime()));
 						
 					}
+					*/
+					
+					$('.resp__image').attr('src', resp);
 					
 					requestAnimationFrame(captureUserMedia);
 					

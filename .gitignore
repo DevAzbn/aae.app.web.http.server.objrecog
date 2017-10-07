@@ -1,5 +1,8 @@
 data/sessions/sessions.nedb
 data/json/*.json
-data/static/upload/*.jpg
-data/static/upload/*.jpeg
-data/static/upload/*.png
+data/static/upload/dataurl/*.jpg
+data/static/upload/dataurl/*.jpeg
+data/static/upload/dataurl/*.png
+data/static/upload/default/*.jpg
+data/static/upload/default/*.jpeg
+data/static/upload/default/*.png
