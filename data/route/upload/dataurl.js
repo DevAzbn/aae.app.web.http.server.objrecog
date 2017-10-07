@@ -8,6 +8,7 @@ var _item_stroke_width = 2;
 
 var threshold_b = [128, 128, 128];
 var threshold_t = [255, 255, 255];
+var iterations = 2;
 
 function _(app, azbn) {
 	
@@ -63,7 +64,7 @@ function _(app, azbn) {
 					
 					for (var i = 0; i < items.length; i++){
 						
-						let item = items[i];
+						var item = items[i];
 						
 						//_img = img.crop(item.x, item.y, item.width, item.height);
 						//img_c.canny(5, 300);
@@ -85,6 +86,46 @@ function _(app, azbn) {
 						//img.ellipse(item.x + item.width / 2, item.y + item.height / 2, item.width / 2, item.height / 2, _item_stroke_color, _item_stroke_width);
 						
 						img.rectangle([item.x, item.y], [item.width, item.height], _item_stroke_color, _item_stroke_width);
+						
+						/*
+						
+						(function(){
+							
+							var subimg = new cv.Matrix(item.height, item.width);
+							
+							img.convertGrayscale();
+							var im_canny = img.copy();
+							im_canny.canny(threshold_b, threshold_t);
+							im_canny.dilate(iterations);
+							
+							var contours = im_canny.findContours();
+							
+							for (i = 0; i < contours.size(); i++) {
+								if (contours.area(i) < 1) continue;
+								var arcLength = contours.arcLength(i, true);
+								contours.approxPolyDP(i, 0.01 * arcLength, true);
+								img.drawContour(contours, i, _item_stroke_color);
+								
+								//switch(contours.cornerCount(i)) {
+								//case 3:
+								//	out.drawContour(contours, i, GREEN);
+								//	break;
+								//case 4:
+								//	out.drawContour(contours, i, RED);
+								//	break;
+								//default:
+								//	out.drawContour(contours, i, WHITE);
+								//}
+								
+							}
+							
+						})();
+						
+						*/
+						
+						
+						
+						
 						
 					}
 					

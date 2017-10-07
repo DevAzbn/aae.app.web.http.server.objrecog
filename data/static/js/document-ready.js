@@ -29,21 +29,25 @@ $(function() {
 				type : 'POST',
 				success: function(resp) {
 					
-					/*
-					if(resp.files && resp.files.length) {
+					if(resp) {
 						
-						var item = resp.files[0];
+						/*
+						if(resp.files && resp.files.length) {
+							
+							var item = resp.files[0];
+							
+							$('.resp__image').attr('src', item + '?v=' + (new Date().getTime()));
+							
+						}
+						*/
 						
-						$('.resp__image').attr('src', item + '?v=' + (new Date().getTime()));
+						$('.resp__image').attr('src', resp);
+						
+						requestAnimationFrame(captureUserMedia);
+						
+						//form.trigger('reset');
 						
 					}
-					*/
-					
-					$('.resp__image').attr('src', resp);
-					
-					requestAnimationFrame(captureUserMedia);
-					
-					//form.trigger('reset');
 					
 				},
 			});
@@ -125,15 +129,15 @@ $(function() {
 			type : form.attr('method'),
 			success: function(resp) {
 				
-				if(resp.files && resp.files.length) {
+				if(resp && resp.files && resp.files.length) {
 					
 					var item = resp.files[0];
 					
 					$('.resp__image').attr('src', item);
 					
+					form.trigger('reset');
+					
 				}
-				
-				form.trigger('reset');
 				
 			},
 		});
