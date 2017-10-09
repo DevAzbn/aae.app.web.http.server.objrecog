@@ -29,8 +29,8 @@ azbn.mdl('express').set('trust proxy', 1);
 
 azbn.mdl('https')
 	.createServer({
-		key : azbn.mdl('fs').readFileSync(azbn.mdl('cfg').cert.key),
-		cert : azbn.mdl('fs').readFileSync(azbn.mdl('cfg').cert.cert),
+		key : azbn.mdl('fs').readFileSync(azbn.mdl('config').cert.key),
+		cert : azbn.mdl('fs').readFileSync(azbn.mdl('config').cert.cert),
 		passphrase : 'aae.app.dev.fi9esdf9234',
 	}, azbn.mdl('express'))
 	.listen(azbn.mdl('config').port.https)
