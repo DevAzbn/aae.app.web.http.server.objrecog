@@ -17,6 +17,7 @@ azbn.setMdl('config', require('./config/main'));
 azbn.mdl('config').port.http = argv.httpport || azbn.mdl('config').port.http || 3000;
 azbn.mdl('config').port.https = argv.httpsport || azbn.mdl('config').port.https || 3001;
 
+azbn.setMdl('fs', require('fs'));
 azbn.setMdl('https', require('https'));
 
 var express = require('express');
