@@ -12,10 +12,10 @@ function _(app, azbn) {
 		//	
 		//} else {
 			
-			res.render('index', {
+			res.render('fromfile', {
 				html : {
 					head : {
-						title : 'ObjRecog',
+						title : 'From file',
 					},
 				},
 			});

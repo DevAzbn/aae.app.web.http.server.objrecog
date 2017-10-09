@@ -12,10 +12,10 @@ function _(app, azbn) {
 		//	
 		//} else {
 			
-			res.render('index', {
+			res.render('webcam', {
 				html : {
 					head : {
-						title : 'ObjRecog',
+						title : 'webcam',
 					},
 				},
 			});

@@ -4,106 +4,110 @@ $(function() {
 	
 	var video = document.querySelector('video#resp__video');
 	
-	navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
-	window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
-	
-	var canvas = document.createElement('canvas');
-	var cnx = canvas.getContext('2d');
-	
-	var captureUserMedia = function() {
+	if(video) {
 		
-		if(!video.paused || !video.ended) {
+		navigator.getUserMedia = navigator.getUserMedia || navigator.webkitGetUserMedia || navigator.mozGetUserMedia || navigator.msGetUserMedia;
+		window.URL = window.URL || window.webkitURL || window.mozURL || window.msURL;
+		
+		var canvas = document.createElement('canvas');
+		var cnx = canvas.getContext('2d');
+		
+		var captureUserMedia = function() {
 			
-			cnx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
-			//console.log(canvas.toDataURL('image/png'));
-			
-			$.ajax({
-				url : '/upload/dataurl/',
-				// ++++++++++++++++ dataType : 'json',
-				//cache : false,
-				//contentType : false,
-				//processData : false,
-				data : {
-					dataurl : '' + canvas.toDataURL('image/jpeg', 0.33),
-				},
-				type : 'POST',
-				success: function(resp) {
-					
-					if(resp) {
+			if(!video.paused || !video.ended) {
+				
+				cnx.drawImage(video, 0, 0, video.videoWidth, video.videoHeight);
+				//console.log(canvas.toDataURL('image/png'));
+				
+				$.ajax({
+					url : '/upload/dataurl/',
+					// ++++++++++++++++ dataType : 'json',
+					//cache : false,
+					//contentType : false,
+					//processData : false,
+					data : {
+						dataurl : '' + canvas.toDataURL('image/jpeg', 0.33),
+					},
+					type : 'POST',
+					success: function(resp) {
 						
-						/*
-						if(resp.files && resp.files.length) {
+						if(resp) {
 							
-							var item = resp.files[0];
+							/*
+							if(resp.files && resp.files.length) {
+								
+								var item = resp.files[0];
+								
+								$('.resp__image').attr('src', item + '?v=' + (new Date().getTime()));
+								
+							}
+							*/
 							
-							$('.resp__image').attr('src', item + '?v=' + (new Date().getTime()));
+							$('.resp__image').attr('src', resp);
+							
+							requestAnimationFrame(captureUserMedia);
+							
+							//form.trigger('reset');
 							
 						}
-						*/
 						
-						$('.resp__image').attr('src', resp);
-						
-						requestAnimationFrame(captureUserMedia);
-						
-						//form.trigger('reset');
-						
-					}
-					
-				},
-			});
-			
-			
-			//requestAnimationFrame(loop);
-			
-		}
-		
-	}
-	
-	if (navigator.getUserMedia) {
-		navigator.getUserMedia({
-			video : true,
-			audio : true,
-		}, function(stream) {
-			
-			if (video.mozSrcObject !== undefined) {
+					},
+				});
 				
-				video.mozSrcObject = stream;
 				
-			} else {
-				
-				video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+				//requestAnimationFrame(loop);
 				
 			}
 			
-			//canvas.width = video.videoWidth;
-			//canvas.height = video.videoHeight;
-			
-			video.addEventListener('loadeddata', function() {
+		}
+		
+		if (navigator.getUserMedia) {
+			navigator.getUserMedia({
+				video : true,
+				audio : true,
+			}, function(stream) {
 				
-				canvas.width = video.videoWidth;
-				canvas.height = video.videoHeight;
+				if (video.mozSrcObject !== undefined) {
+					
+					video.mozSrcObject = stream;
+					
+				} else {
+					
+					video.src = (window.URL && window.URL.createObjectURL(stream)) || stream;
+					
+				}
 				
-				console.log('Video dimensions: ' + video.videoWidth + ' x ' + video.videoHeight);
+				//canvas.width = video.videoWidth;
+				//canvas.height = video.videoHeight;
 				
-				captureUserMedia();
+				video.addEventListener('loadeddata', function() {
+					
+					canvas.width = video.videoWidth;
+					canvas.height = video.videoHeight;
+					
+					console.log('Video dimensions: ' + video.videoWidth + ' x ' + video.videoHeight);
+					
+					captureUserMedia();
+					
+					//setInterval(captureUserMedia, 777);
+					
+				}, false);
 				
-				//setInterval(captureUserMedia, 777);
+				video.play();
 				
-			}, false);
-			
-			video.play();
-			
-			/*
-			
-			*/
-			
-			
-			
-		}, function errorCallback(error) {
-			
-			console.error(error);
-			
-		});
+				/*
+				
+				*/
+				
+				
+				
+			}, function errorCallback(error) {
+				
+				console.error(error);
+				
+			});
+		}
+		
 	}
 	
 	$(document.body).on('submit.azbn7', '.azbn7__form_upload', null, function(event){

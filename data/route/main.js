@@ -34,6 +34,8 @@ function _(app, azbn) {
 	azbn.mdl('express').post('/api/v1/', (new require('./api/v1')(app, azbn)));
 	
 	azbn.mdl('express').get('/', (new require('./index')(app, azbn)));
+	azbn.mdl('express').get('/webcam/', (new require('./webcam')(app, azbn)));
+	azbn.mdl('express').get('/fromfile/', (new require('./fromfile')(app, azbn)));
 	
 	azbn.mdl('express').post('/upload/default/', multipartMiddleware, (new require('./upload/default')(app, azbn)));
 	azbn.mdl('express').post('/upload/dataurl/', (new require('./upload/dataurl')(app, azbn)));
