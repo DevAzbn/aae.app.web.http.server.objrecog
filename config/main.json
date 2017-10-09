@@ -3,6 +3,10 @@
 		"http" : 17005,
 		"https" : 17006
 	},
+	"cert" : {
+		"key" : "./data/cert/app.key",
+		"cert" : "./data/cert/app.crt"
+	},
 	"path" : {
 		"static" : "./data/static",
 		"route" : "./data/route",

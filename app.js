@@ -17,6 +17,7 @@ azbn.setMdl('config', require('./config/main'));
 azbn.mdl('config').port.http = argv.httpport || azbn.mdl('config').port.http || 3000;
 azbn.mdl('config').port.https = argv.httpsport || azbn.mdl('config').port.https || 3001;
 
+azbn.setMdl('https', require('https'));
 
 var express = require('express');
 azbn.setMdl('express', express());
@@ -25,16 +26,14 @@ azbn.setMdl('express', express());
 
 azbn.mdl('express').set('trust proxy', 1);
 
-/*
 azbn.mdl('https')
 	.createServer({
 		key : azbn.mdl('fs').readFileSync(azbn.mdl('cfg').cert.key),
 		cert : azbn.mdl('fs').readFileSync(azbn.mdl('cfg').cert.cert),
-		passphrase : '1985',
+		passphrase : 'aae.app.dev.fi9esdf9234',
 	}, azbn.mdl('express'))
-	.listen(azbn.mdl('cfg').express.sport)
-	;
-*/
+	.listen(azbn.mdl('config').port.https)
+;
 
 // компрессия
 azbn.mdl('express').use(require('compression')());
@@ -63,7 +62,7 @@ azbn.mdl('express').use(express_session({
 	//	return genuuid();
 	//},
 	name : 'aae.app.session',
-	secret : 'aae.app.dev54893592479234',//azbn.randstr(),
+	secret : 'aae.app.dev.fi9esdf9234',//azbn.randstr(),
 	resave : false,
 	saveUninitialized : false,
 	proxy: true,
