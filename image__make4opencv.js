@@ -56,9 +56,11 @@ azbn.mdl('fs/tree').walk('./data/opencv/education/process/negatives/' + argv.typ
 			
 			var file_arr = [];
 			
-			file_arr = file.split(['opencv', 'education', 'process', 'negatives', ''].join(path.sep));
+			//file_arr = file.split(['opencv', 'education', 'process', 'negatives', ''].join(path.sep));
 			
-			files__negative.push(file_arr[1]);
+			//files__negative.push(file_arr[1]);
+			
+			files__negative.push(file);
 			
 		}
 		
@@ -84,6 +86,8 @@ azbn.mdl('fs/tree').walk('./data/opencv/education/process/negatives/' + argv.typ
 			argv.w,
 			'-h',
 			argv.h,
+			'-num',
+			argv.pos_count,
 		],
 		[
 			is_windows ? argv.opencv + '/' + 'opencv_traincascade.exe' : 'opencv_traincascade',
@@ -97,7 +101,7 @@ azbn.mdl('fs/tree').walk('./data/opencv/education/process/negatives/' + argv.typ
 			'-minhitrate 0.925',
 			'-maxFalseAlarmRate 0.5',
 			'-numPos',
-			argv.pos_count,
+			parseInt(parseFloat(argv.pos_count) * 0.8),
 			'-numNeg',
 			files__negative.length,
 			'-w',
@@ -107,6 +111,7 @@ azbn.mdl('fs/tree').walk('./data/opencv/education/process/negatives/' + argv.typ
 			'-mode ALL',
 			'-precalcValBufSize 1024',
 			'-precalcIdxBufSize 1024',
+			'-acceptanceRatioBreakValue "-1"',
 		],
 		[],
 	];
