@@ -58,11 +58,13 @@ function _(app, azbn) {
 				//FACE_CASCADE EYE_CASCADE EYEGLASSES_CASCADE FULLBODY_CASCADE CAR_SIDE_CASCADE
 				
 				img.detectObject('./data/opencv/xml/objrecog_train__cap__0001.xml', {
+					/*
 					radius : 1,
 					neighbors : 8,
 					grid_x : 8,
 					grid_y : 8,
 					threshold : 80,
+					*/
 				}, function(_err, items){
 					
 					if (_err) {

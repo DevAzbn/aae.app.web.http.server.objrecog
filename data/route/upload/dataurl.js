@@ -3,7 +3,7 @@
 var fs = require('fs');
 var cv = require('opencv');
 
-var _item_stroke_color = [255, 255, 255];
+var _item_stroke_color = [0, 0, 255];
 var _item_stroke_width = 2;
 
 var threshold_b = [128, 128, 128];
@@ -49,11 +49,13 @@ function _(app, azbn) {
 				//FACE_CASCADE EYE_CASCADE EYEGLASSES_CASCADE FULLBODY_CASCADE CAR_SIDE_CASCADE
 				
 				img.detectObject('./data/opencv/xml/objrecog_train__cap__0001.xml', {
+					/*
 					radius : 1,
 					neighbors : 8,
 					grid_x : 8,
 					grid_y : 8,
 					threshold : 80,
+					*/
 				}, function(_err, items){
 					
 					if (_err) {
