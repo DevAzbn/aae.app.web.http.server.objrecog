@@ -10,6 +10,7 @@ var app = azbn.loadApp(module);
 
 var argv = require('optimist')
 	.usage('Usage: $0 --from=[Path to source-dir] --type=[Name of project or type of objects] --copies=[Max copies for image]')
+	.default('deg', 21)
 	.default('copies', 10)
 	.default('type', 'default')
 	.demand([
@@ -74,13 +75,13 @@ azbn.mdl('fs/tree').walk(argv.from, function(file, stat){
 						(function(_image, _j){
 								
 								image.background(Jimp.rgbaToInt(
-									azbn.randint(0, 255),
-									azbn.randint(0, 255),
-									azbn.randint(0, 255),
-									azbn.randint(0, 255)
+									0,//azbn.randint(0, 255),
+									0,//azbn.randint(0, 255),
+									0,//azbn.randint(0, 255),
+									255,//azbn.randint(0, 255)
 								));
 								
-								_image.rotate(azbn.randint(-30, 30));
+								_image.rotate(azbn.randint(-argv.deg, argv.deg));
 								
 								var new_file = azbn.uuid.v4()  + '.bmp';
 								

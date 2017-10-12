@@ -88,6 +88,10 @@ azbn.mdl('fs/tree').walk('./data/opencv/education/process/negatives/' + argv.typ
 			argv.h,
 			'-num',
 			argv.pos_count,
+			'-bgcolor',
+			0,
+			'-bgthresh',
+			0,
 		],
 		[
 			is_windows ? argv.opencv + '/' + 'opencv_traincascade.exe' : 'opencv_traincascade',

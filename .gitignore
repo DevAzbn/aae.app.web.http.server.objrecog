@@ -3,6 +3,8 @@ data/json/*.json
 data/static/upload/**/*.jpg
 data/static/upload/**/*.jpeg
 data/static/upload/**/*.png
+data/static/upload/**/*.bmp
 data/opencv/**/*.jpg
 data/opencv/**/*.jpeg
 data/opencv/**/*.png
+data/opencv/**/*.bmp
