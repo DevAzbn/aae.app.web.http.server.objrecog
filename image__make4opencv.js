@@ -98,7 +98,7 @@ azbn.mdl('fs/tree').walk('./data/opencv/education/process/negatives/' + argv.typ
 			'-bg',
 			'./negatives/' + argv.type + '.txt',
 			'-numStages 16',
-			'-minhitrate 0.925',
+			'-minHitRate 0.925',
 			'-maxFalseAlarmRate 0.5',
 			'-numPos',
 			parseInt(parseFloat(argv.pos_count) * 0.8),
