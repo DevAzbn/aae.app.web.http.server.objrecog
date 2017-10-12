@@ -1,2 +1,2 @@
-c:/OpenCV/build/x64/vc14/bin/opencv_createsamples.exe -info ./positives/default.txt -vec ./vectors/default.vec -w 20 -h 20 -num 26
-c:/OpenCV/build/x64/vc14/bin/opencv_traincascade.exe -data ./cascades/default/ -vec ./vectors/default.vec -bg ./negatives/default.txt -numStages 16 -minhitrate 0.925 -maxFalseAlarmRate 0.5 -numPos 20 -numNeg 1077 -w 20 -h 20 -mode ALL -precalcValBufSize 1024 -precalcIdxBufSize 1024 -acceptanceRatioBreakValue "-1"
+c:/OpenCV/build/x64/vc14/bin/opencv_createsamples.exe -info ./positives/default.txt -vec ./vectors/default.vec -w 20 -h 20 -num 200
+c:/OpenCV/build/x64/vc14/bin/opencv_traincascade.exe -data ./cascades/default/ -vec ./vectors/default.vec -bg ./negatives/default.txt -numStages 16 -minhitrate 0.925 -maxFalseAlarmRate 0.5 -numPos 160 -numNeg 1077 -w 20 -h 20 -mode ALL -precalcValBufSize 1024 -precalcIdxBufSize 1024 -acceptanceRatioBreakValue -1
