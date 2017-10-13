@@ -57,7 +57,7 @@ function _(app, azbn) {
 				//'./data/opencv/xml/auto__number_russian.xml'
 				//FACE_CASCADE EYE_CASCADE EYEGLASSES_CASCADE FULLBODY_CASCADE CAR_SIDE_CASCADE
 				
-				img.detectObject('./data/opencv/xml/objrecog_train__cap__0001.xml', {
+				img.detectObject('./data/opencv/xml/cascade.xml', {
 					/*
 					radius : 1,
 					neighbors : 8,
